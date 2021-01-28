@@ -1,13 +1,15 @@
-package mm.etopup.com.mvp.presenters;
+package mm.etopup.com.presenter;
 
 import android.content.Context;
+
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
+
 import mm.etopup.com.base.presenter.BasePresenter;
 import mm.etopup.com.database.AppDatabase;
 import mm.etopup.com.database.entity.UserEntity;
 
-public class LoginPresenter extends BasePresenter {
+
+public class AdminPresenter extends BasePresenter {
 
     private AppDatabase mAppDatabase;
 
@@ -17,10 +19,12 @@ public class LoginPresenter extends BasePresenter {
         mAppDatabase = AppDatabase.getInMemoryDatabase(context);
     }
 
-    public LiveData<UserEntity> getLoginUser(String email , String password){
-        return mAppDatabase.userDao().checkLoginUser(email,password);
+    public void  saveNewUser(UserEntity userEntity){
+         mAppDatabase.userDao().insertUser(userEntity);
     }
 
-
+    public LiveData<UserEntity> checkPhoneNumber(String phone){
+        return mAppDatabase.userDao().checkPhoneNumber(phone);
+    }
 
 }

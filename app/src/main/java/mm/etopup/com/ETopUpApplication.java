@@ -4,7 +4,7 @@ import android.app.Application;
 
 import mm.etopup.com.database.AppDatabase;
 import mm.etopup.com.database.entity.UserEntity;
-import mm.etopup.com.utils.SessionManager;
+import mm.etopup.com.session.SessionManager;
 
 public class ETopUpApplication extends Application {
     protected AppDatabase mAppDatabase;

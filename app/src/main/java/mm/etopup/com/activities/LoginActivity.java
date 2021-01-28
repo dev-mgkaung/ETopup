@@ -16,8 +16,8 @@ import butterknife.ButterKnife;
 import mm.etopup.com.R;
 import mm.etopup.com.base.activity.BaseActivity;
 import mm.etopup.com.database.entity.UserEntity;
-import mm.etopup.com.mvp.presenters.LoginPresenter;
-import mm.etopup.com.utils.SessionManager;
+import mm.etopup.com.presenter.LoginPresenter;
+import mm.etopup.com.session.SessionManager;
 
 public class LoginActivity extends BaseActivity  {
 

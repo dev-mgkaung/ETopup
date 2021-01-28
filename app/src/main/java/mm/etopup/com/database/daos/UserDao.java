@@ -23,4 +23,8 @@ public interface UserDao extends BaseDao<UserEntity> {
     @Transaction
     @Query("SELECT * FROM user WHERE user_name = :name AND password = :password")
     LiveData<UserEntity> checkLoginUser(String name , String password);
+
+    @Transaction
+    @Query("SELECT * FROM user WHERE phone_number = :phone_number")
+    LiveData<UserEntity> checkPhoneNumber(String phone_number );
 }

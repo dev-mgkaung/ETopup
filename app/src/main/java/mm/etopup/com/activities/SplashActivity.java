@@ -4,8 +4,7 @@ import android.os.Bundle;
 
 import mm.etopup.com.R;
 import mm.etopup.com.base.activity.BaseActivity;
-import mm.etopup.com.database.entity.UserEntity;
-import mm.etopup.com.utils.SessionManager;
+import mm.etopup.com.session.SessionManager;
 
 
 public class SplashActivity extends BaseActivity {

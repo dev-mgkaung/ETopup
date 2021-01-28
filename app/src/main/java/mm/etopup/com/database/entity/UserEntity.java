@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 public class UserEntity {
 
     @PrimaryKey
-    public int user_id;
+    public long user_id;
     public String user_name;
     public String password;
     public String phone_number;
@@ -35,7 +35,7 @@ public class UserEntity {
         this.user_type = user_type;
     }
 
-    public int getUser_id() {
+    public long getUser_id() {
         return user_id;
     }
 

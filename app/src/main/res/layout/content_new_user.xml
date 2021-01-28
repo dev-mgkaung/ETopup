@@ -64,6 +64,7 @@
             android:id="@+id/ed_user_balance"
             android:inputType="number"
             android:maxLines="1"
+            android:maxLength="8"
             android:hint="Enter Amount"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
@@ -99,16 +100,13 @@
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:id="@+id/create_btn"
+            android:id="@+id/save_btn"
             android:backgroundTint="@color/colorPrimary"
-            android:text="Login"
+            android:text="Save"
             android:textColor="@color/white"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="@dimen/loginViewsMargin"
             android:layout_marginTop="@dimen/loginViewsMargin"/>
-
-
-
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
