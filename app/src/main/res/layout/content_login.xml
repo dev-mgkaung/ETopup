@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/textInputEmail"
             android:layout_marginTop="@dimen/loginViewsMargin">
-            <EditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/editTextEmail"
@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/loginViewsMargin">
-            <EditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

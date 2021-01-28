@@ -3,26 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/account_fragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="mm.etopup.com.activities.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/account_fragment"
+        android:name="mm.etopup.com.fragment.user.AccountFragment"
+        android:label="@string/account"
+        tools:layout="@layout/fragment_account">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/history_fragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="mm.etopup.com.activities.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
+        android:id="@+id/history_fragment"
+        android:name="mm.etopup.com.fragment.user.HistoryFragment"
+        android:label="@string/history"
+        tools:layout="@layout/fragment_history"/>
 </navigation>

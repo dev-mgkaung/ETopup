@@ -3,23 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_new_user">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="mm.etopup.com.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_new_user"
+        android:name="mm.etopup.com.fragment.admin.NewUserFragment"
+        android:label="@string/title_user"
+        tools:layout="@layout/fragment_new_user" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="mm.etopup.com.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_userlist"
+        android:name="mm.etopup.com.fragment.admin.UserListFragment"
+        android:label="@string/title_userList"
+        tools:layout="@layout/fragment_user_list" />
 
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="mm.etopup.com.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+
 </navigation>
