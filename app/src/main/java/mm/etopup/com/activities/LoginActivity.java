@@ -4,14 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import mm.etopup.com.R;
+import mm.etopup.com.base.activity.BaseActivity;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     @BindView(R.id.loginButton)
     AppCompatButton loginButton;

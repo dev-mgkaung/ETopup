@@ -1,11 +1,11 @@
 package mm.etopup.com.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import mm.etopup.com.R;
+import mm.etopup.com.base.activity.BaseActivity;
 
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
 
 
     @Override

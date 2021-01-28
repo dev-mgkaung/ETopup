@@ -4,14 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import mm.etopup.com.R;
+import mm.etopup.com.base.activity.BaseActivity;
 
-public class AdminActivity extends AppCompatActivity {
+public class AdminActivity extends BaseActivity {
 
     public static void open(Context context) {
         Intent intent = new Intent(context, AdminActivity.class);
