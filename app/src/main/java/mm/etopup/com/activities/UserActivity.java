@@ -3,13 +3,18 @@ package mm.etopup.com.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
+
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import mm.etopup.com.R;
 import mm.etopup.com.adapters.SectionsPagerAdapter;
 
 public class UserActivity extends AppCompatActivity {
+
 
     public static void open(Context context) {
         Intent intent = new Intent(context, UserActivity.class);
@@ -25,5 +30,6 @@ public class UserActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
+
     }
 }

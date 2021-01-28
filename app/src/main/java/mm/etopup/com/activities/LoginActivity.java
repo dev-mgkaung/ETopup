@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AdminActivity.open(LoginActivity.this);
+                UserActivity.open(LoginActivity.this);
             }
         });
     }

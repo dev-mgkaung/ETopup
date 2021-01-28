@@ -9,11 +9,12 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import mm.etopup.com.R;
 import mm.etopup.com.fragment.user.HistoryFragment;
 import mm.etopup.com.fragment.admin.NewUserFragment;
+import mm.etopup.com.fragment.user.TopupFragment;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.account, R.string.history};
+    private static final int[] TAB_TITLES = new int[]{R.string.topup, R.string.history,R.string.account};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
@@ -24,6 +25,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if(position == 0) {
+            return TopupFragment.newInstance();
+        }else if(position ==1)
+        {
             return NewUserFragment.newInstance();
         }
         else {
@@ -39,6 +43,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 }
