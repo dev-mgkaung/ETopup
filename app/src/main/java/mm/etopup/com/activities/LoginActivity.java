@@ -17,6 +17,7 @@ import mm.etopup.com.R;
 import mm.etopup.com.base.activity.BaseActivity;
 import mm.etopup.com.database.entity.UserEntity;
 import mm.etopup.com.mvp.presenters.LoginPresenter;
+import mm.etopup.com.utils.SessionManager;
 
 public class LoginActivity extends BaseActivity  {
 
@@ -70,9 +71,13 @@ public class LoginActivity extends BaseActivity  {
                         if (user != null) {
                             if(user.user_type.equalsIgnoreCase("admin")){
                                 AdminActivity.open(LoginActivity.this);
+                                SessionManager.getObjectInstance(LoginActivity.this).setAlreadyLoggedInUserType("admin");
                             }else {
                                 UserActivity.open(LoginActivity.this);
+                                SessionManager.getObjectInstance(LoginActivity.this).setAlreadyLoggedInUserType("user");
                             }
+                            SessionManager.getObjectInstance(LoginActivity.this).setLoggedIn(true);
+
                             LoginActivity.this.finish();
                         }else{
                             Toast.makeText(LoginActivity.this,"Something Wrong Login Failed",Toast.LENGTH_LONG).show();

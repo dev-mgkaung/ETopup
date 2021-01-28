@@ -24,9 +24,7 @@ public class AdminActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_new_user, R.id.navigation_userlist).build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-      //  NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
     }
 

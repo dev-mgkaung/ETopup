@@ -4,6 +4,7 @@ import android.app.Application;
 
 import mm.etopup.com.database.AppDatabase;
 import mm.etopup.com.database.entity.UserEntity;
+import mm.etopup.com.utils.SessionManager;
 
 public class ETopUpApplication extends Application {
     protected AppDatabase mAppDatabase;
@@ -13,5 +14,6 @@ public class ETopUpApplication extends Application {
         mAppDatabase = AppDatabase.getInMemoryDatabase(this);
         mAppDatabase.userDao().insertUser(new UserEntity(
                 0, "admin", "12345","091234567",1000,"admin"));
+        SessionManager.getObjectInstance(this).initSession();
     }
 }
