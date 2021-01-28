@@ -4,6 +4,8 @@ import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
+import java.util.List;
+
 import mm.etopup.com.base.presenter.BasePresenter;
 import mm.etopup.com.database.AppDatabase;
 import mm.etopup.com.database.entity.UserEntity;
@@ -25,6 +27,10 @@ public class AdminPresenter extends BasePresenter {
 
     public LiveData<UserEntity> checkPhoneNumber(String phone){
         return mAppDatabase.userDao().checkPhoneNumber(phone);
+    }
+
+    public LiveData<List<UserEntity>> getAllUser(){
+        return mAppDatabase.userDao().getAllUser();
     }
 
 }

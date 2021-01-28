@@ -89,6 +89,7 @@ public class NewUserFragment extends Fragment {
                         System.out.println(timestamp.getTime());
                         userEntity.user_id = timestamp.getTime();
                         userEntity.user_type = "user";
+                        userEntity.user_name = ed_username.getText().toString();
                         userEntity.balance = Integer.parseInt(ed_user_balance.getText().toString());
                         userEntity.phone_number = ed_user_phone.getText().toString();
                         userEntity.password = ed_new_password.getText().toString();
