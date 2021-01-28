@@ -3,17 +3,37 @@ package mm.etopup.com.database.entity;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "user")
 public class UserEntity {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     public int user_id;
     public String user_name;
     public String password;
     public String phone_number;
     public int balance;
+    public String user_type;
 
-     public UserEntity(){}
+
+    public UserEntity(){}
+
+     public UserEntity(int user_id, String user_name, String password, String phone_number, int balance,String user_type)
+     {
+         this.user_id =user_id;
+         this.user_name = user_name;
+         this.password= password;
+         this.phone_number = phone_number;
+         this.balance =balance;
+         this.user_type= user_type;
+     }
+
+    public String getUserType() {
+        return user_type;
+    }
+
+    public void setUserType(String user_type) {
+        this.user_type = user_type;
+    }
 
     public int getUser_id() {
         return user_id;
