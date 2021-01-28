@@ -73,6 +73,7 @@ public class LoginActivity extends BaseActivity  {
                             }else {
                                 UserActivity.open(LoginActivity.this);
                             }
+                            LoginActivity.this.finish();
                         }else{
                             Toast.makeText(LoginActivity.this,"Something Wrong Login Failed",Toast.LENGTH_LONG).show();
                         }
