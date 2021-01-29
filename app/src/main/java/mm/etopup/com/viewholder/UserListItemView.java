@@ -25,11 +25,12 @@ public class UserListItemView extends LinearLayout {
     TextView ul_password;
     @BindView(R.id.ul_amount)
     TextView ul_amount;
+    @BindView(R.id.ul_email)
+    TextView ul_email;
 
     Context context;
     UserEntity data;
-    ArrayList<UserEntity> datalist;
-    int position;
+
 
     public UserListItemView(Context context) {
         super(context);
@@ -58,6 +59,7 @@ public class UserListItemView extends LinearLayout {
         ul_amount.setText  ("Amount      =  " + data.balance+"  Kyats");
         ul_password.setText("Password    =  " + data.password);
         ul_phone.setText   ("Phone         =  "+ data.phone_number);
+        ul_email.setText   ("Email         =  "+ data.email);
     }
 
 }

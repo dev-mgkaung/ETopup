@@ -21,8 +21,8 @@ public interface UserDao extends BaseDao<UserEntity> {
     long insertUser(UserEntity user);
 
     @Transaction
-    @Query("SELECT * FROM user WHERE user_name = :name AND password = :password LIMIT 1")
-    LiveData<UserEntity> checkLoginUser(String name , String password);
+    @Query("SELECT * FROM user WHERE email = :email AND password = :password LIMIT 1")
+    LiveData<UserEntity> checkLoginUser(String email , String password);
 
     @Transaction
     @Query("SELECT * FROM user WHERE phone_number = :phone_number LIMIT 1")

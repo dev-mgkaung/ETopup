@@ -45,6 +45,13 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="14sp"
+                android:id="@+id/ul_email"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="14sp"
                 android:id="@+id/ul_phone"/>
             <TextView
                 android:layout_width="wrap_content"

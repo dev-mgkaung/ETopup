@@ -9,6 +9,7 @@ public class UserEntity {
     @PrimaryKey
     public long user_id;
     public String user_name;
+    public String email;
     public String password;
     public String phone_number;
     public int balance;
@@ -17,15 +18,36 @@ public class UserEntity {
 
     public UserEntity(){}
 
-     public UserEntity(int user_id, String user_name, String password, String phone_number, int balance,String user_type)
+
+    public UserEntity(int user_id, String user_name, String email, String password, String phone_number, int balance, String user_type)
      {
          this.user_id =user_id;
          this.user_name = user_name;
+         this.email =email;
          this.password= password;
          this.phone_number = phone_number;
          this.balance =balance;
          this.user_type= user_type;
      }
+    public void setUser_id(long user_id) {
+        this.user_id = user_id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getUser_type() {
+        return user_type;
+    }
+
+    public void setUser_type(String user_type) {
+        this.user_type = user_type;
+    }
 
     public String getUserType() {
         return user_type;

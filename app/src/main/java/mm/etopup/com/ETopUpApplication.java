@@ -13,7 +13,7 @@ public class ETopUpApplication extends Application {
         super.onCreate();
         mAppDatabase = AppDatabase.getInMemoryDatabase(this);
         mAppDatabase.userDao().insertUser(new UserEntity(
-                0, "admin", "12345","091234567",1000,"admin"));
+                0, "admin", "admin@gmail.com" , "12345","091234567",1000,"admin"));
         SessionManager.getObjectInstance(this).initSession();
     }
 }
