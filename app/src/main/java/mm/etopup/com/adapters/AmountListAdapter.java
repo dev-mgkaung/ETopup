@@ -12,11 +12,19 @@ import mm.etopup.com.viewholder.AmountViewHolder;
 
 public class AmountListAdapter<T extends BaseViewHolder, W> extends BaseRecyclerAdapter<T, W> {
 
-    public AmountListAdapter(Context context ) {
+    private static int previous_postion = -1;
+    AmountViewHolder.AmountSelectListener amountSelectListener ;
+    public AmountListAdapter(Context context, AmountViewHolder.AmountSelectListener amountSelectListener) {
         super(context);
         mLayoutInflater = LayoutInflater.from(context);
+        this.amountSelectListener = amountSelectListener;
     }
 
+    public  void setAmount(int previous_postion)
+    {
+        this.previous_postion =previous_postion;
+        notifyDataSetChanged();
+    }
     @NonNull
     @Override
     public T onCreateViewHolder(@NonNull ViewGroup parent, int i) {
@@ -30,7 +38,7 @@ public class AmountListAdapter<T extends BaseViewHolder, W> extends BaseRecycler
         if (holder instanceof AmountViewHolder) {
             AmountViewHolder amountViewHolder = (AmountViewHolder) holder;
             if(amountViewHolder!=null) {
-                amountViewHolder.bind(mData.get(position));
+                amountViewHolder.bindData(mData.get(position),previous_postion,amountSelectListener);
             }
         }
     }

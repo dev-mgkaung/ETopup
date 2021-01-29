@@ -16,8 +16,9 @@ import mm.etopup.com.R;
 import mm.etopup.com.adapters.AmountListAdapter;
 import mm.etopup.com.adapters.OperatorListAdapter;
 import mm.etopup.com.presenter.UserPresenter;
+import mm.etopup.com.viewholder.AmountViewHolder;
 
-public class TopupFragment extends Fragment {
+public class TopupFragment extends Fragment  implements AmountViewHolder.AmountSelectListener {
 
     @BindView(R.id.operatorlist)
     RecyclerView operator_recyclerview;
@@ -63,7 +64,7 @@ public class TopupFragment extends Fragment {
     {
 
         adapter = new OperatorListAdapter(getActivity());
-        amountListAdapter = new AmountListAdapter(getActivity());
+        amountListAdapter = new AmountListAdapter(getActivity() , this);
         operator_recyclerview.setAdapter(adapter);
         amount_recyclerview.setAdapter(amountListAdapter);
         RecyclerView.LayoutManager llm = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
@@ -87,16 +88,11 @@ public class TopupFragment extends Fragment {
         amount_list.add("10000 Ks");
         amountListAdapter.setNewData(amount_list);
 
-//        userPresenter.getAllUser().observe(getActivity(), new Observer<List<UserEntity>>() {
-//            @Override
-//            public void onChanged(@Nullable final List<UserEntity> userlist) {
-//                if (userlist != null) {
-//                    adapter.setNewData(userlist);
-//                    userList.setScrollContainer(true);
-//                    userList.computeVerticalScrollExtent();
-//                }
-//            }
-//        });
 
+    }
+
+    @Override
+    public void selectedAmountItem(int previousposition, String amount) {
+        amountListAdapter.setAmount(previousposition);
     }
 }

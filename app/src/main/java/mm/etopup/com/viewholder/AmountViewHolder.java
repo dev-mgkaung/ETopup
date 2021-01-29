@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,22 +22,52 @@ public class AmountViewHolder <T> extends BaseViewHolder<T> {
     @BindView(R.id.amount_layout)
     LinearLayout amount_layout;
 
+    AmountSelectListener amountSelectListener;
+    int previous_position= -1;
 
-    public AmountViewHolder(View itemView) {
+    public AmountViewHolder(View itemView ) {
         super(itemView);
         ButterKnife.bind(this, itemView);
+
     }
 
     @Override
     public void bind(T data) {
-        if (data instanceof String){
-            amount_text.setText(data.toString());
-        }
     }
 
+    public void bindData(T data ,int previousposition ,AmountSelectListener amountSelectListener) {
+        this.amountSelectListener =amountSelectListener;
+        this.previous_position = previousposition;
+        if (data instanceof String){
+
+            if(previousposition != getAdapterPosition())
+            {
+                checkimage.setVisibility(View.GONE);
+                amount_layout.setBackgroundResource(R.drawable.rounded_border_grey_amount);
+            }else{
+                checkimage.setVisibility(View.VISIBLE);
+                amount_layout.setBackgroundResource(R.drawable.rounded_border_blue_amount);
+            }
+
+            amount_text.setText(data.toString());
+
+            amount_layout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    previous_position = getAdapterPosition();
+                    amountSelectListener.selectedAmountItem(previous_position, data.toString());
+                    Toast.makeText(itemView.getContext(), data.toString(),Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
 
     @Override
     public void onClick(View v) {
 
+    }
+
+    public interface AmountSelectListener {
+        void selectedAmountItem(  int previousposition , String amount);
     }
 }
