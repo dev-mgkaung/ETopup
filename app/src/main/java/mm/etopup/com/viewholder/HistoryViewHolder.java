@@ -46,8 +46,6 @@ public class HistoryViewHolder <T> extends BaseViewHolder<T> {
     }
 
     @Override
-    public void onClick(View v) {
-
-    }
+    public void onClick(View v) { }
 
 }

@@ -31,6 +31,7 @@ import mm.etopup.com.database.entity.TransitionHistory;
 import mm.etopup.com.database.entity.UserEntity;
 import mm.etopup.com.presenter.UserPresenter;
 import mm.etopup.com.session.SessionManager;
+import mm.etopup.com.utils.UtilPnoValidation;
 import mm.etopup.com.viewholder.AmountViewHolder;
 import mm.etopup.com.viewholder.OperatorViewHolder;
 
@@ -129,21 +130,27 @@ public class TopupFragment extends Fragment  implements AmountViewHolder.AmountS
             @Override
             public void onClick(View v) {
                 if(ed_topup_amount.getText().toString().equalsIgnoreCase("") || ed_topup_amount.getText().toString().equalsIgnoreCase("0") ||
-                 ed_topup_phone.getText().toString().equalsIgnoreCase("") || currentOperator.equalsIgnoreCase(""))
+                 ed_topup_phone.getText().toString().equalsIgnoreCase("") || currentOperator.equalsIgnoreCase("") ||  UtilPnoValidation.getInstance().isCorrectPno(ed_topup_phone.getText().toString()) == false)
                 {
-                    Toast.makeText(getActivity(), "Something wrong incomplete form", Toast.LENGTH_SHORT).show();
+                   if(UtilPnoValidation.getInstance().isCorrectPno(ed_topup_phone.getText().toString()) == false) {
+                       Toast.makeText(getActivity(), "Incorrect Phone Number", Toast.LENGTH_LONG).show();
+                   }else{
+                       Toast.makeText(getActivity(), "Something wrong incomplete form", Toast.LENGTH_LONG).show();
+                   }
+
                 }
                 else {
+
                     if (Integer.parseInt(ed_topup_amount.getText().toString()) < mainBalance) {
                         if (mainBalance > 0) {
                             mainBalance = mainBalance - Integer.parseInt(ed_topup_amount.getText().toString());
                             TopUpConfirmActivity.open(getActivity(), mainBalance, currentOperator, ed_topup_phone.getText().toString());
                             getActivity().finish();
                         } else {
-                            Toast.makeText(getActivity(), "Your balance is empty", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Your balance is empty", Toast.LENGTH_LONG).show();
                         }
                     } else{
-                        Toast.makeText(getActivity(), "Not Available topup amount is exceed than main balance", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Not Available topup amount is exceed than main balance", Toast.LENGTH_LONG).show();
                     }
                 }
             }
