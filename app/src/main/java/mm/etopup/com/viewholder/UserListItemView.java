@@ -54,10 +54,10 @@ public class UserListItemView extends LinearLayout {
 
     public void bind( UserEntity data) {
         this.data = data;
-        ul_name.setText    ("Name        =" +data.user_name);
-        ul_amount.setText  ("Amount      =" +data.balance+"  MMK");
-        ul_password.setText("Password    =" +data.password);
-        ul_phone.setText   ("Phone       ="+data.phone_number);
+        ul_name.setText    ("Name          =  " + data.user_name);
+        ul_amount.setText  ("Amount      =  " + data.balance+"  MMK");
+        ul_password.setText("Password    =  " + data.password);
+        ul_phone.setText   ("Phone         =  "+ data.phone_number);
     }
 
 }

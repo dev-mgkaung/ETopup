@@ -2,6 +2,7 @@ package mm.etopup.com.fragment.admin;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,7 @@ public class NewUserFragment extends Fragment {
     AppCompatEditText ed_confirm_password;
 
     AdminPresenter adminPresenter;
+    private boolean isExistingPhoneNo =false;
 
     public static NewUserFragment newInstance() {
         NewUserFragment fragment = new NewUserFragment();
@@ -78,6 +80,7 @@ public class NewUserFragment extends Fragment {
         save_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                isExistingPhoneNo =false;
                 if(ed_username.getText().toString().equalsIgnoreCase("") || ed_user_phone.getText().toString().equalsIgnoreCase("") ||
                 ed_user_balance.getText().toString().equalsIgnoreCase("") || ed_new_password.getText().toString().equalsIgnoreCase("") || ed_confirm_password.getText().toString().equalsIgnoreCase(""))
                 {
@@ -93,23 +96,18 @@ public class NewUserFragment extends Fragment {
                         userEntity.balance = Integer.parseInt(ed_user_balance.getText().toString());
                         userEntity.phone_number = ed_user_phone.getText().toString();
                         userEntity.password = ed_new_password.getText().toString();
+
                         adminPresenter.checkPhoneNumber(ed_user_phone.getText().toString()).observe(getActivity(), new Observer<UserEntity>() {
                             @Override
                             public void onChanged(@Nullable final UserEntity user) {
                                 if (user != null) {
-                                    Toast.makeText(getActivity(), "This phone number already exist. Please enter other phone number.", Toast.LENGTH_LONG).show();
+                                    if(isExistingPhoneNo == false ) {
+                                        Toast.makeText(getActivity(), "This phone number already exist. Please enter other phone number.", Toast.LENGTH_LONG).show();
+                                    }
                                 } else {
                                     adminPresenter.saveNewUser(userEntity);
-                                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-                                    alertDialog.setTitle("Successful");
-                                    alertDialog.setMessage("Your account is created!");
-                                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                                            new DialogInterface.OnClickListener() {
-                                                public void onClick(DialogInterface dialog, int which) {
-                                                    dialog.dismiss();
-                                                }
-                                            });
-                                    alertDialog.show();
+                                    isExistingPhoneNo =true;
+                                    callSuccessDialog();
                                 }
                             }
                         });
@@ -120,6 +118,20 @@ public class NewUserFragment extends Fragment {
                   }
             }
         });
+    }
+
+    public void callSuccessDialog()
+    {
+        AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+        alertDialog.setTitle("Successful");
+        alertDialog.setMessage("Your account is created!");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
     }
 
 }

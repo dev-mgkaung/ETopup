@@ -31,7 +31,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textInputEmail"
-            app:passwordToggleEnabled="true"
             android:layout_marginTop="@dimen/loginViewsMargin">
             <androidx.appcompat.widget.AppCompatEditText
                 android:layout_width="match_parent"
@@ -46,6 +45,7 @@
             android:id="@+id/textInputPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true"
             android:layout_marginTop="@dimen/loginViewsMargin">
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/editTextPassword"
