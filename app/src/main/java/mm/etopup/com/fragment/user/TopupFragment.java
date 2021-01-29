@@ -4,8 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,7 +20,9 @@ import butterknife.ButterKnife;
 import mm.etopup.com.R;
 import mm.etopup.com.adapters.AmountListAdapter;
 import mm.etopup.com.adapters.OperatorListAdapter;
+import mm.etopup.com.database.entity.UserEntity;
 import mm.etopup.com.presenter.UserPresenter;
+import mm.etopup.com.session.SessionManager;
 import mm.etopup.com.viewholder.AmountViewHolder;
 import mm.etopup.com.viewholder.OperatorViewHolder;
 
@@ -26,6 +33,10 @@ public class TopupFragment extends Fragment  implements AmountViewHolder.AmountS
 
     @BindView(R.id.amount_list)
     RecyclerView amount_recyclerview;
+
+    @BindView(R.id.mainbalance)
+    TextView mainbalance;
+
 
     UserPresenter userPresenter;
     OperatorListAdapter adapter;
@@ -89,6 +100,15 @@ public class TopupFragment extends Fragment  implements AmountViewHolder.AmountS
         amount_list.add("10000 Ks");
         amountListAdapter.setNewData(amount_list);
 
+
+        userPresenter.getUser(SessionManager.getObjectInstance(getActivity()).toString()).observe(getActivity(), new Observer<UserEntity>() {
+            @Override
+            public void onChanged(@Nullable final UserEntity user) {
+                if (user != null) {
+                    mainbalance.setText(user.balance + "  Ks");
+                }
+            }
+        });
 
     }
 

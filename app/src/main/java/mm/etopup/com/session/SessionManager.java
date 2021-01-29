@@ -19,6 +19,7 @@ public class SessionManager {
     private String PREF_NAME = "ELoad";
     private String IS_LOGIN = "IsLoggedIn";
     private String KEY_USERTYPE = "usertype";
+    private String KEY_USEREMAIL = "user_email";
 
     public SessionManager() {
     }
@@ -49,6 +50,16 @@ public class SessionManager {
         editor.putBoolean(IS_LOGIN, loggedIn);
         editor.commit();
     }
+
+    public String getEmail() {
+        return pref.getString(KEY_USEREMAIL, "");
+    }
+
+    public void setEmail(String phoneNumber) {
+        editor.putString(KEY_USEREMAIL, phoneNumber);
+        editor.commit();
+    }
+
 
     public void setAlreadyLoggedInUserType(String type) {
         editor.putString(KEY_USERTYPE, type);

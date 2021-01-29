@@ -92,6 +92,7 @@ public class NewUserFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 SessionManager.getObjectInstance(getActivity()).setLoggedIn(false);
+                SessionManager.getObjectInstance(getActivity()).setEmail("");
                 getActivity().finish();
                 SplashActivity.open(getActivity());
             }

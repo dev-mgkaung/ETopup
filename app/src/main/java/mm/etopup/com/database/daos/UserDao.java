@@ -27,4 +27,8 @@ public interface UserDao extends BaseDao<UserEntity> {
     @Transaction
     @Query("SELECT * FROM user WHERE phone_number = :phone_number LIMIT 1")
     LiveData<UserEntity> checkPhoneNumber(String phone_number );
+
+    @Transaction
+    @Query("SELECT * FROM user WHERE phone_number = :phone_number LIMIT 1")
+    LiveData<UserEntity> getOneUser(String phone_number );
 }
