@@ -17,8 +17,9 @@ import mm.etopup.com.adapters.AmountListAdapter;
 import mm.etopup.com.adapters.OperatorListAdapter;
 import mm.etopup.com.presenter.UserPresenter;
 import mm.etopup.com.viewholder.AmountViewHolder;
+import mm.etopup.com.viewholder.OperatorViewHolder;
 
-public class TopupFragment extends Fragment  implements AmountViewHolder.AmountSelectListener {
+public class TopupFragment extends Fragment  implements AmountViewHolder.AmountSelectListener , OperatorViewHolder.OperatorSelectListener {
 
     @BindView(R.id.operatorlist)
     RecyclerView operator_recyclerview;
@@ -63,7 +64,7 @@ public class TopupFragment extends Fragment  implements AmountViewHolder.AmountS
     public void setUpRecyclerView()
     {
 
-        adapter = new OperatorListAdapter(getActivity());
+        adapter = new OperatorListAdapter(getActivity(),this);
         amountListAdapter = new AmountListAdapter(getActivity() , this);
         operator_recyclerview.setAdapter(adapter);
         amount_recyclerview.setAdapter(amountListAdapter);
@@ -94,5 +95,10 @@ public class TopupFragment extends Fragment  implements AmountViewHolder.AmountS
     @Override
     public void selectedAmountItem(int previousposition, String amount) {
         amountListAdapter.setAmount(previousposition);
+    }
+
+    @Override
+    public void selectedOperatorItem(int previousposition, String operator) {
+        adapter.setSelectedOperator(previousposition);
     }
 }

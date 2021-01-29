@@ -4,8 +4,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import mm.etopup.com.R;
@@ -56,7 +54,7 @@ public class AmountViewHolder <T> extends BaseViewHolder<T> {
                 public void onClick(View v) {
                     previous_position = getAdapterPosition();
                     amountSelectListener.selectedAmountItem(previous_position, data.toString());
-                    Toast.makeText(itemView.getContext(), data.toString(),Toast.LENGTH_SHORT).show();
+
                 }
             });
         }

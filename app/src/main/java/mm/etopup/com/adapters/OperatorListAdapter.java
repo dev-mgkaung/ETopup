@@ -13,9 +13,19 @@ import mm.etopup.com.viewholder.OperatorViewHolder;
 
 public class OperatorListAdapter<T extends BaseViewHolder, W> extends BaseRecyclerAdapter<T, W> {
 
-    public OperatorListAdapter(Context context ) {
+    private static int previous_postion = -1;
+    OperatorViewHolder.OperatorSelectListener operatorSelectListener;
+
+    public OperatorListAdapter(Context context , OperatorViewHolder.OperatorSelectListener selectListener) {
         super(context);
+        this.operatorSelectListener = selectListener;
         mLayoutInflater = LayoutInflater.from(context);
+    }
+
+    public  void setSelectedOperator(int previous_postion)
+    {
+        this.previous_postion =previous_postion;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -31,7 +41,7 @@ public class OperatorListAdapter<T extends BaseViewHolder, W> extends BaseRecycl
         if (holder instanceof OperatorViewHolder) {
             OperatorViewHolder operatorViewHolder = (OperatorViewHolder) holder;
             if(operatorViewHolder!=null) {
-                operatorViewHolder.bind(mData.get(position));
+                operatorViewHolder.bindData(mData.get(position) ,previous_postion ,operatorSelectListener);
             }
         }
     }

@@ -1,5 +1,6 @@
 package mm.etopup.com.viewholder;
 
+import android.graphics.Color;
 import android.view.View;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -12,6 +13,8 @@ public class OperatorViewHolder <T> extends BaseViewHolder<T> {
     @BindView(R.id.operatorid)
     CircleImageView operator;
 
+    OperatorSelectListener operatorSelectListener;
+    int previous_position= -1;
 
     public OperatorViewHolder(View itemView) {
         super(itemView);
@@ -20,6 +23,21 @@ public class OperatorViewHolder <T> extends BaseViewHolder<T> {
 
     @Override
     public void bind(T data) {
+
+    }
+
+
+    public void bindData(T data , int previousposition , OperatorSelectListener operatorSelectListener) {
+        this.operatorSelectListener = operatorSelectListener;
+        this.previous_position = previousposition;
+
+        if(previousposition != getAdapterPosition())
+        {
+            operator.setBorderColor(Color.LTGRAY);
+        }else{
+            operator.setBorderColor(0xFF673AB7);
+        }
+
         if (data instanceof String){
             if(((String) data).equalsIgnoreCase("ooredoo")) {
                 operator.setImageResource(R.drawable.ooredoo);
@@ -37,11 +55,22 @@ public class OperatorViewHolder <T> extends BaseViewHolder<T> {
                 operator.setImageResource(R.drawable.mec);
             }
         }
-    }
 
+        operator.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                previous_position = getAdapterPosition();
+                operatorSelectListener.selectedOperatorItem(previous_position , data.toString());
+            }
+        });
+    }
 
     @Override
     public void onClick(View v) {
 
+    }
+
+    public interface OperatorSelectListener {
+        void selectedOperatorItem(  int previousposition , String operator);
     }
 }
