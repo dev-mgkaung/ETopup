@@ -17,9 +17,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,7 +25,6 @@ import mm.etopup.com.R;
 import mm.etopup.com.activities.TopUpConfirmActivity;
 import mm.etopup.com.adapters.AmountListAdapter;
 import mm.etopup.com.adapters.OperatorListAdapter;
-import mm.etopup.com.database.entity.TransitionHistory;
 import mm.etopup.com.database.entity.UserEntity;
 import mm.etopup.com.presenter.UserPresenter;
 import mm.etopup.com.session.SessionManager;
@@ -35,7 +32,7 @@ import mm.etopup.com.utils.UtilPnoValidation;
 import mm.etopup.com.viewholder.AmountViewHolder;
 import mm.etopup.com.viewholder.OperatorViewHolder;
 
-public class TopupFragment extends Fragment  implements AmountViewHolder.AmountSelectListener , OperatorViewHolder.OperatorSelectListener {
+public class TopupFragment extends Fragment implements AmountViewHolder.AmountSelectListener, OperatorViewHolder.OperatorSelectListener {
 
     @BindView(R.id.operatorlist)
     RecyclerView operator_recyclerview;
@@ -56,7 +53,7 @@ public class TopupFragment extends Fragment  implements AmountViewHolder.AmountS
     AppCompatButton rechargeBtn;
 
 
-    String currentOperator= "";
+    String currentOperator = "";
 
     UserPresenter userPresenter;
     int mainBalance = -1;
@@ -64,6 +61,7 @@ public class TopupFragment extends Fragment  implements AmountViewHolder.AmountS
     AmountListAdapter amountListAdapter;
     ArrayList<String> operator_list = new ArrayList<String>();
     ArrayList<String> amount_list = new ArrayList<String>();
+
     public static TopupFragment newInstance() {
         TopupFragment fragment = new TopupFragment();
         return fragment;
@@ -88,22 +86,20 @@ public class TopupFragment extends Fragment  implements AmountViewHolder.AmountS
     }
 
 
-    private void initPresenter()
-    {
-        userPresenter= ViewModelProviders.of(this).get(UserPresenter.class);
+    private void initPresenter() {
+        userPresenter = ViewModelProviders.of(this).get(UserPresenter.class);
         userPresenter.initPresenter(getActivity());
     }
 
-    public void setUpRecyclerView()
-    {
+    public void setUpRecyclerView() {
 
-        adapter = new OperatorListAdapter(getActivity(),this);
-        amountListAdapter = new AmountListAdapter(getActivity() , this);
+        adapter = new OperatorListAdapter(getActivity(), this);
+        amountListAdapter = new AmountListAdapter(getActivity(), this);
         operator_recyclerview.setAdapter(adapter);
         amount_recyclerview.setAdapter(amountListAdapter);
         RecyclerView.LayoutManager llm = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         amount_recyclerview.setLayoutManager(llm);
-        RecyclerView.LayoutManager lln= new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView.LayoutManager lln = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         operator_recyclerview.setLayoutManager(lln);
 
         operator_list.clear();
@@ -124,32 +120,52 @@ public class TopupFragment extends Fragment  implements AmountViewHolder.AmountS
 
     }
 
-    private void setUpListener()
-    {
+    private void setUpListener() {
         rechargeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ed_topup_amount.getText().toString().equalsIgnoreCase("") || ed_topup_amount.getText().toString().equalsIgnoreCase("0") ||
-                 ed_topup_phone.getText().toString().equalsIgnoreCase("") || currentOperator.equalsIgnoreCase("") ||  UtilPnoValidation.getInstance().isCorrectPno(ed_topup_phone.getText().toString()) == false)
-                {
-                   if(UtilPnoValidation.getInstance().isCorrectPno(ed_topup_phone.getText().toString()) == false) {
-                       Toast.makeText(getActivity(), "Incorrect Phone Number", Toast.LENGTH_LONG).show();
-                   }else{
-                       Toast.makeText(getActivity(), "Something wrong incomplete form", Toast.LENGTH_LONG).show();
-                   }
+                if (ed_topup_amount.getText().toString().equalsIgnoreCase("") || ed_topup_amount.getText().toString().equalsIgnoreCase("0") ||
+                        ed_topup_phone.getText().toString().equalsIgnoreCase("") || currentOperator.equalsIgnoreCase("") || UtilPnoValidation.getInstance().isValidMyanmarPhoneNumber(ed_topup_phone.getText().toString()) == false) {
+                    if (UtilPnoValidation.getInstance().isValidMyanmarPhoneNumber(ed_topup_phone.getText().toString()) == false) {
+                        Toast.makeText(getActivity(), "Incorrect Phone Number", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getActivity(), "Something wrong incomplete form", Toast.LENGTH_LONG).show();
+                    }
 
-                }
-                else {
+                } else {
 
                     if (Integer.parseInt(ed_topup_amount.getText().toString()) < mainBalance) {
                         if (mainBalance > 0) {
+                            boolean status  = false;
                             mainBalance = mainBalance - Integer.parseInt(ed_topup_amount.getText().toString());
-                            TopUpConfirmActivity.open(getActivity(), mainBalance, currentOperator, ed_topup_phone.getText().toString());
-                            getActivity().finish();
+
+                            if(currentOperator.equalsIgnoreCase("ooredoo"))
+                            {
+                                status = UtilPnoValidation.getInstance().isOoredoo(ed_topup_phone.getText().toString());
+                            }else if(currentOperator.equalsIgnoreCase("mytel"))
+                            {
+                                status = UtilPnoValidation.getInstance().isMyTel(ed_topup_phone.getText().toString());
+                            }else if( currentOperator.equalsIgnoreCase("mpt"))
+                            {
+                                status = UtilPnoValidation.getInstance().isMPT(ed_topup_phone.getText().toString());
+                            }else if( currentOperator.equalsIgnoreCase("telenor"))
+                            {
+                                status = UtilPnoValidation.getInstance().isTelenor(ed_topup_phone.getText().toString());
+                            }else if( currentOperator.equalsIgnoreCase("mec"))
+                            {
+                                status = UtilPnoValidation.getInstance().isMEC(ed_topup_phone.getText().toString());
+                            }
+                            if(status) {
+                                TopUpConfirmActivity.open(getActivity(), mainBalance , Integer.parseInt(ed_topup_amount.getText().toString()), currentOperator, ed_topup_phone.getText().toString());
+                                getActivity().finish();
+                            }else{
+                                Toast.makeText(getActivity(),"Invalid Mobile No ( operator and phone number is not same type)",Toast.LENGTH_LONG).show();
+                            }
+
                         } else {
                             Toast.makeText(getActivity(), "Your balance is empty", Toast.LENGTH_LONG).show();
                         }
-                    } else{
+                    } else {
                         Toast.makeText(getActivity(), "Not Available topup amount is exceed than main balance", Toast.LENGTH_LONG).show();
                     }
                 }
@@ -157,8 +173,7 @@ public class TopupFragment extends Fragment  implements AmountViewHolder.AmountS
         });
     }
 
-    private void listenObserver()
-    {
+    private void listenObserver() {
         userPresenter.getUser(SessionManager.getObjectInstance(getActivity()).getEmail().toString()).observe(getActivity(), new Observer<UserEntity>() {
             @Override
             public void onChanged(@Nullable final UserEntity user) {

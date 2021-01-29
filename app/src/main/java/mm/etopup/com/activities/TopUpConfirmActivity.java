@@ -26,6 +26,7 @@ public class TopUpConfirmActivity extends BaseActivity {
     int balance = -1;
     String operatorname;
     String pno;
+    int amount =-1;
 
     @BindView(R.id.cancel_btn)
     MaterialButton cancel_btn;
@@ -46,9 +47,10 @@ public class TopUpConfirmActivity extends BaseActivity {
     TextView back;
 
 
-    public static void open(Context context, int balance, String operatorname, String pno) {
+    public static void open(Context context, int balance, int amount ,String operatorname, String pno) {
         Intent intent = new Intent(context, TopUpConfirmActivity.class);
         intent.putExtra("balance" , balance);
+        intent.putExtra("amount" , amount);
         intent.putExtra("operatorname" ,operatorname);
         intent.putExtra("pno",pno);
         context.startActivity(intent);
@@ -64,6 +66,7 @@ public class TopUpConfirmActivity extends BaseActivity {
         balance = getIntent().getIntExtra("balance",0);
         operatorname= getIntent().getStringExtra("operatorname").toString();
         pno = getIntent().getStringExtra("pno").toString();
+        amount = getIntent().getIntExtra("amount",0);
 
         confirm_amount.setText(balance+"  Ks");
         confirm_phone.setText(pno);
@@ -96,7 +99,7 @@ public class TopUpConfirmActivity extends BaseActivity {
                         operatorname, pno,
                         SessionManager.getObjectInstance(TopUpConfirmActivity.this).getEmail().toString(),
                         formatter.format(date).toString() ,
-                        balance + ""
+                        amount + ""
                 ));
                 callSuccessDialog();
             }

@@ -10,6 +10,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <LinearLayout
     android:layout_width="match_parent"
+    android:layout_marginTop="10dp"
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <RelativeLayout
@@ -92,18 +93,27 @@
             android:textStyle="bold"
             android:text="Amount"
             android:textColor="@color/black"/>
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:id="@+id/amount"
-            android:textStyle="bold"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:drawableLeft="@drawable/ic_baseline_minimize_18"
-            android:text="1000 Ks"
-            android:textColor="@color/black"/>
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_baseline_minimize_24"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/amount"
+                android:textStyle="bold"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="1000 Ks"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"

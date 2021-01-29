@@ -65,6 +65,7 @@
                             android:id="@+id/ed_topup_phone"
                             android:inputType="number"
                             android:maxLines="1"
+                            android:maxLength="13"
                             android:hint="Enter Phone Number"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
