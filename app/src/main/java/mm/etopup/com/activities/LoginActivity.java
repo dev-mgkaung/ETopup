@@ -77,6 +77,7 @@ public class LoginActivity extends BaseActivity  {
                                 SessionManager.getObjectInstance(LoginActivity.this).setAlreadyLoggedInUserType("user");
                             }
                             SessionManager.getObjectInstance(LoginActivity.this).setLoggedIn(true);
+                            Toast.makeText(LoginActivity.this,editTextEmail.getText().toString(),Toast.LENGTH_SHORT).show();
                             SessionManager.getObjectInstance(LoginActivity.this).setEmail(editTextEmail.getText().toString());
 
                             LoginActivity.this.finish();

@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -37,6 +39,17 @@ public class TopupFragment extends Fragment  implements AmountViewHolder.AmountS
     @BindView(R.id.mainbalance)
     TextView mainbalance;
 
+    @BindView(R.id.ed_topup_phone)
+    AppCompatEditText ed_topup_phone;
+
+    @BindView(R.id.ed_topup_amount)
+    AppCompatEditText ed_topup_amount;
+
+    @BindView(R.id.rechargeBtn)
+    AppCompatButton rechargeBtn;
+
+
+    String currentOperator;
 
     UserPresenter userPresenter;
     OperatorListAdapter adapter;
@@ -61,7 +74,8 @@ public class TopupFragment extends Fragment  implements AmountViewHolder.AmountS
         ButterKnife.bind(this, root);
         initPresenter();
         setUpRecyclerView();
-
+        listenObserver();
+        setUpListener();
         return root;
     }
 
@@ -93,15 +107,28 @@ public class TopupFragment extends Fragment  implements AmountViewHolder.AmountS
         adapter.setNewData(operator_list);
 
         amount_list.clear();
-        amount_list.add("500 Ks");
-        amount_list.add("1000 Ks");
-        amount_list.add("3000 Ks");
-        amount_list.add("5000 Ks");
-        amount_list.add("10000 Ks");
+        amount_list.add("500");
+        amount_list.add("1000");
+        amount_list.add("3000");
+        amount_list.add("5000");
+        amount_list.add("10000");
         amountListAdapter.setNewData(amount_list);
 
+    }
 
-        userPresenter.getUser(SessionManager.getObjectInstance(getActivity()).toString()).observe(getActivity(), new Observer<UserEntity>() {
+    private void setUpListener()
+    {
+        rechargeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
+
+    private void listenObserver()
+    {
+        userPresenter.getUser(SessionManager.getObjectInstance(getActivity()).getEmail().toString()).observe(getActivity(), new Observer<UserEntity>() {
             @Override
             public void onChanged(@Nullable final UserEntity user) {
                 if (user != null) {
@@ -109,16 +136,17 @@ public class TopupFragment extends Fragment  implements AmountViewHolder.AmountS
                 }
             }
         });
-
     }
 
     @Override
     public void selectedAmountItem(int previousposition, String amount) {
         amountListAdapter.setAmount(previousposition);
+        ed_topup_amount.setText(amount);
     }
 
     @Override
     public void selectedOperatorItem(int previousposition, String operator) {
         adapter.setSelectedOperator(previousposition);
+        currentOperator = operator;
     }
 }

@@ -25,8 +25,8 @@ public class UserPresenter extends BasePresenter {
         return mAppDatabase.userDao().getAllUser();
     }
 
-    public LiveData<UserEntity> getUser(String phoneNumber){
-        return mAppDatabase.userDao().getOneUser(phoneNumber);
+    public LiveData<UserEntity> getUser(String email){
+        return mAppDatabase.userDao().getOneUser(email);
     }
 
 }

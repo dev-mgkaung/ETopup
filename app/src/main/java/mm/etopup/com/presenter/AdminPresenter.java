@@ -25,8 +25,8 @@ public class AdminPresenter extends BasePresenter {
          mAppDatabase.userDao().insertUser(userEntity);
     }
 
-    public LiveData<UserEntity> checkPhoneNumber(String phone){
-        return mAppDatabase.userDao().checkPhoneNumber(phone);
+    public LiveData<UserEntity> checkPhoneNumber(String phone , String email){
+        return mAppDatabase.userDao().checkPhoneNumber(phone, email);
     }
 
     public LiveData<List<UserEntity>> getAllUser(){

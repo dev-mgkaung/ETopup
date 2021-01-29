@@ -120,12 +120,12 @@ public class NewUserFragment extends Fragment {
                         userEntity.phone_number = ed_user_phone.getText().toString();
                         userEntity.password = ed_new_password.getText().toString();
 
-                        adminPresenter.checkPhoneNumber(ed_user_phone.getText().toString()).observe(getActivity(), new Observer<UserEntity>() {
+                        adminPresenter.checkPhoneNumber(ed_user_phone.getText().toString(), ed_email.getText().toString()).observe(getActivity(), new Observer<UserEntity>() {
                             @Override
                             public void onChanged(@Nullable final UserEntity user) {
                                 if (user != null) {
                                     if(isExistingPhoneNo == false ) {
-                                        Toast.makeText(getActivity(), "This phone number already exist. Please enter other phone number.", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getActivity(), "This phone number or email is already exist. Please enter other phone number.", Toast.LENGTH_LONG).show();
                                     }
                                 } else {
                                     adminPresenter.saveNewUser(userEntity);

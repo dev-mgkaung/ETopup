@@ -47,7 +47,7 @@ public class AmountViewHolder <T> extends BaseViewHolder<T> {
                 amount_layout.setBackgroundResource(R.drawable.rounded_border_blue_amount);
             }
 
-            amount_text.setText(data.toString());
+            amount_text.setText(data.toString() + " Ks ");
 
             amount_layout.setOnClickListener(new View.OnClickListener() {
                 @Override

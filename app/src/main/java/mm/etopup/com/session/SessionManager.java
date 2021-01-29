@@ -55,8 +55,8 @@ public class SessionManager {
         return pref.getString(KEY_USEREMAIL, "");
     }
 
-    public void setEmail(String phoneNumber) {
-        editor.putString(KEY_USEREMAIL, phoneNumber);
+    public void setEmail(String email) {
+        editor.putString(KEY_USEREMAIL, email);
         editor.commit();
     }
 

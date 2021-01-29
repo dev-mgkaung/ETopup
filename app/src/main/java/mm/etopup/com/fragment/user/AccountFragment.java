@@ -80,8 +80,7 @@ public class AccountFragment extends Fragment {
 
     private void listenObserver()
     {
-        Toast.makeText(getActivity(),"phone = " + SessionManager.getObjectInstance(getActivity()).getEmail().toString(), Toast.LENGTH_SHORT).show();
-        userPresenter.getUser(SessionManager.getObjectInstance(getActivity()).getEmail().toString()).observe(getActivity(), new Observer<UserEntity>() {
+       userPresenter.getUser(SessionManager.getObjectInstance(getActivity()).getEmail().toString()).observe(getActivity(), new Observer<UserEntity>() {
             @Override
             public void onChanged(@Nullable final UserEntity user) {
                 if (user != null) {

@@ -25,10 +25,10 @@ public interface UserDao extends BaseDao<UserEntity> {
     LiveData<UserEntity> checkLoginUser(String email , String password);
 
     @Transaction
-    @Query("SELECT * FROM user WHERE phone_number = :phone_number LIMIT 1")
-    LiveData<UserEntity> checkPhoneNumber(String phone_number );
+    @Query("SELECT * FROM user WHERE phone_number = :phone_number OR email = :email LIMIT 1")
+    LiveData<UserEntity> checkPhoneNumber(String phone_number , String email );
 
     @Transaction
-    @Query("SELECT * FROM user WHERE phone_number = :phone_number LIMIT 1")
-    LiveData<UserEntity> getOneUser(String phone_number );
+    @Query("SELECT * FROM user WHERE email = :email LIMIT 1")
+    LiveData<UserEntity> getOneUser(String email );
 }
