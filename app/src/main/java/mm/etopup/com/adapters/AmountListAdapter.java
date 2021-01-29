@@ -1,22 +1,18 @@
 package mm.etopup.com.adapters;
 
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
-import java.util.ArrayList;
-
 import mm.etopup.com.R;
 import mm.etopup.com.base.adapter.BaseRecyclerAdapter;
 import mm.etopup.com.base.views.holders.BaseViewHolder;
-import mm.etopup.com.database.entity.UserEntity;
-import mm.etopup.com.viewholder.UserViewHolder;
+import mm.etopup.com.viewholder.AmountViewHolder;
 
-public class UserListAdapter<T extends BaseViewHolder, W> extends BaseRecyclerAdapter<T, W> {
+public class AmountListAdapter<T extends BaseViewHolder, W> extends BaseRecyclerAdapter<T, W> {
 
-    public UserListAdapter(Context context ) {
+    public AmountListAdapter(Context context ) {
         super(context);
         mLayoutInflater = LayoutInflater.from(context);
     }
@@ -25,16 +21,16 @@ public class UserListAdapter<T extends BaseViewHolder, W> extends BaseRecyclerAd
     @Override
     public T onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.user_list_layout, parent, false);
-        return (T) new UserViewHolder<>(view);
+                .inflate(R.layout.amount_list_item, parent, false);
+        return (T) new AmountViewHolder<>(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull T holder, int position) {
-        if (holder instanceof UserViewHolder) {
-            UserViewHolder userViewHolder = (UserViewHolder) holder;
-            if(userViewHolder!=null) {
-                userViewHolder.bindData(mData.get(position),(ArrayList<UserEntity>)mData,position);
+        if (holder instanceof AmountViewHolder) {
+            AmountViewHolder amountViewHolder = (AmountViewHolder) holder;
+            if(amountViewHolder!=null) {
+                amountViewHolder.bind(mData.get(position));
             }
         }
     }

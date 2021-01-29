@@ -12,11 +12,15 @@ import mm.etopup.com.R;
 
 public class AccountFragment extends Fragment {
 
+    public static AccountFragment newInstance() {
+        AccountFragment fragment = new AccountFragment();
+        return fragment;
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_new_user, container, false);
+        View root = inflater.inflate(R.layout.fragment_account, container, false);
         return root;
     }
 

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import mm.etopup.com.R;
+import mm.etopup.com.fragment.user.AccountFragment;
 import mm.etopup.com.fragment.user.HistoryFragment;
 import mm.etopup.com.fragment.admin.NewUserFragment;
 import mm.etopup.com.fragment.user.TopupFragment;
@@ -28,10 +29,10 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             return TopupFragment.newInstance();
         }else if(position ==1)
         {
-            return NewUserFragment.newInstance();
+            return HistoryFragment.newInstance();
         }
         else {
-            return HistoryFragment.newInstance( );
+            return AccountFragment.newInstance( );
         }
     }
 
