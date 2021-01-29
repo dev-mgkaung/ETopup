@@ -31,4 +31,10 @@ public interface UserDao extends BaseDao<UserEntity> {
     @Transaction
     @Query("SELECT * FROM user WHERE email = :email LIMIT 1")
     LiveData<UserEntity> getOneUser(String email );
+
+    @Query("UPDATE user SET balance = :amount WHERE email = :email")
+    public int updateUserByEmail(String email , String amount);
+
+    @Query("Delete from user")
+    public void deleteAll();
 }

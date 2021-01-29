@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="60dp"
+     android:background="@color/white"
+     android:orientation="horizontal">
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_margin="8dp"
+         android:textColor="@color/black"
+         android:id="@+id/back"
+         android:textSize="18sp"
+         android:textStyle="bold"
+         android:drawableLeft="@drawable/ic_baseline_arrow_back_ios_new_24"
+         android:text="Mobile Topup Verify"/>
+ </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="10dp">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:id="@+id/operatorimage"
+                    android:src="@drawable/ooredoo"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_border_grey_amount"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="30dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:layout_marginTop="10dp"
+                    android:text="Top up Amount"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_marginTop="10dp"
+                    android:text="00000"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:layout_marginTop="10dp"
+                    android:text="Mobile Number"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_marginTop="10dp"
+                    android:text="00000"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_alignParentBottom="true">
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#6A6A6A"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:id="@+id/cancel_btn"
+                    android:layout_margin="8dp"
+                    android:textColor="@color/white"
+                    android:text="Cancel"/>
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:backgroundTint="#3F51B5"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:id="@+id/confirm_btn"
+                    android:textColor="@color/white"
+                    android:text="Confirm"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+
+</LinearLayout>

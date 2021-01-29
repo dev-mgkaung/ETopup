@@ -16,12 +16,18 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import mm.etopup.com.R;
+import mm.etopup.com.activities.TopUpConfirmActivity;
 import mm.etopup.com.adapters.AmountListAdapter;
 import mm.etopup.com.adapters.OperatorListAdapter;
+import mm.etopup.com.database.entity.TransitionHistory;
 import mm.etopup.com.database.entity.UserEntity;
 import mm.etopup.com.presenter.UserPresenter;
 import mm.etopup.com.session.SessionManager;
@@ -49,9 +55,10 @@ public class TopupFragment extends Fragment  implements AmountViewHolder.AmountS
     AppCompatButton rechargeBtn;
 
 
-    String currentOperator;
+    String currentOperator= "";
 
     UserPresenter userPresenter;
+    int mainBalance = -1;
     OperatorListAdapter adapter;
     AmountListAdapter amountListAdapter;
     ArrayList<String> operator_list = new ArrayList<String>();
@@ -121,7 +128,20 @@ public class TopupFragment extends Fragment  implements AmountViewHolder.AmountS
         rechargeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(ed_topup_amount.getText().toString().equalsIgnoreCase("") || ed_topup_amount.getText().toString().equalsIgnoreCase("0") ||
+                 ed_topup_phone.getText().toString().equalsIgnoreCase("") || currentOperator.equalsIgnoreCase(""))
+                {
+                    Toast.makeText(getActivity(), "Something wrong incomplete form", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    if (mainBalance > 0) {
+                        mainBalance = mainBalance - Integer.parseInt(ed_topup_amount.getText().toString());
+                        TopUpConfirmActivity.open(getActivity(), mainBalance ,currentOperator , ed_topup_phone.getText().toString());
+                        getActivity().finish();
+                    } else {
+                        Toast.makeText(getActivity(), "Your balance is empty", Toast.LENGTH_SHORT).show();
+                           }
+                     }
             }
         });
     }
@@ -133,6 +153,7 @@ public class TopupFragment extends Fragment  implements AmountViewHolder.AmountS
             public void onChanged(@Nullable final UserEntity user) {
                 if (user != null) {
                     mainbalance.setText(user.balance + "  Ks");
+                    mainBalance = user.balance;
                 }
             }
         });

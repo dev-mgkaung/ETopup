@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData;
 import java.util.List;
 import mm.etopup.com.base.presenter.BasePresenter;
 import mm.etopup.com.database.AppDatabase;
+import mm.etopup.com.database.entity.TransitionHistory;
 import mm.etopup.com.database.entity.UserEntity;
 
 public class UserPresenter extends BasePresenter {
@@ -17,16 +18,20 @@ public class UserPresenter extends BasePresenter {
         mAppDatabase = AppDatabase.getInMemoryDatabase(context);
     }
 
-    public void  saveRechage(UserEntity userEntity){
-        //mAppDatabase.userDao().insertUser(userEntity);
+    public void  updateUserBalance(String email , String balance){
+       mAppDatabase.userDao().updateUserByEmail(email , balance);
     }
 
-    public LiveData<List<UserEntity>> getHistoryByEmail(){
-        return mAppDatabase.userDao().getAllUser();
+    public LiveData<List<TransitionHistory>> getHistoryByEmail(String email){
+        return mAppDatabase.transitionDao().getAllHistoryByEmail(email);
     }
 
     public LiveData<UserEntity> getUser(String email){
         return mAppDatabase.userDao().getOneUser(email);
+    }
+
+    public void  insertTransitionRecord(TransitionHistory transitionHistory){
+         mAppDatabase.transitionDao().insertTransition(transitionHistory);
     }
 
 }

@@ -3,9 +3,7 @@ package mm.etopup.com.viewholder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
-
 import java.util.ArrayList;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import mm.etopup.com.R;
