@@ -134,14 +134,18 @@ public class TopupFragment extends Fragment  implements AmountViewHolder.AmountS
                     Toast.makeText(getActivity(), "Something wrong incomplete form", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    if (mainBalance > 0) {
-                        mainBalance = mainBalance - Integer.parseInt(ed_topup_amount.getText().toString());
-                        TopUpConfirmActivity.open(getActivity(), mainBalance ,currentOperator , ed_topup_phone.getText().toString());
-                        getActivity().finish();
-                    } else {
-                        Toast.makeText(getActivity(), "Your balance is empty", Toast.LENGTH_SHORT).show();
-                           }
-                     }
+                    if (Integer.parseInt(ed_topup_amount.getText().toString()) < mainBalance) {
+                        if (mainBalance > 0) {
+                            mainBalance = mainBalance - Integer.parseInt(ed_topup_amount.getText().toString());
+                            TopUpConfirmActivity.open(getActivity(), mainBalance, currentOperator, ed_topup_phone.getText().toString());
+                            getActivity().finish();
+                        } else {
+                            Toast.makeText(getActivity(), "Your balance is empty", Toast.LENGTH_SHORT).show();
+                        }
+                    } else{
+                        Toast.makeText(getActivity(), "Not Available topup amount is exceed than main balance", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
     }

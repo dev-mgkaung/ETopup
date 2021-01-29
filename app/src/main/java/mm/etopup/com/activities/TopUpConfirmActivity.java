@@ -5,12 +5,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProviders;
 import com.google.android.material.button.MaterialButton;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import mm.etopup.com.R;
 import mm.etopup.com.base.activity.BaseActivity;
 import mm.etopup.com.database.entity.TransitionHistory;
@@ -30,6 +33,19 @@ public class TopUpConfirmActivity extends BaseActivity {
     @BindView(R.id.confirm_btn)
     MaterialButton confirm_btn;
 
+    @BindView(R.id.confirm_phone)
+    TextView confirm_phone;
+
+    @BindView(R.id.confirm_amount)
+    TextView confirm_amount;
+
+    @BindView(R.id.operatorimage)
+    ImageView operatorimage;
+
+    @BindView(R.id.back)
+    TextView back;
+
+
     public static void open(Context context, int balance, String operatorname, String pno) {
         Intent intent = new Intent(context, TopUpConfirmActivity.class);
         intent.putExtra("balance" , balance);
@@ -42,11 +58,26 @@ public class TopUpConfirmActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topup_confirm);
+        ButterKnife.bind(this);
         initPresenter();
 
-        balance = Integer.parseInt(getIntent().getStringExtra("balance"));
+        balance = getIntent().getIntExtra("balance",0);
+        operatorname= getIntent().getStringExtra("operatorname").toString();
+        pno = getIntent().getStringExtra("pno").toString();
 
+        confirm_amount.setText(balance+"  Ks");
+        confirm_phone.setText(pno);
 
+        if(operatorname.equalsIgnoreCase("ooredoo"))
+        {
+           operatorimage.setImageResource(R.drawable.ooredoo);
+        }else  if(operatorname.equalsIgnoreCase("mpt")){
+            operatorimage.setImageResource(R.drawable.mpt);
+        }else  if(operatorname.equalsIgnoreCase("telenor")){
+            operatorimage.setImageResource(R.drawable.telenor);
+        }else  if(operatorname.equalsIgnoreCase("mec")){
+            operatorimage.setImageResource(R.drawable.mec);
+        }
         cancel_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +102,13 @@ public class TopUpConfirmActivity extends BaseActivity {
             }
         });
 
-
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TopUpConfirmActivity.this.finish();
+                UserActivity.open(TopUpConfirmActivity.this);
+            }
+        });
 
     }
 

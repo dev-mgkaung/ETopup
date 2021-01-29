@@ -32,6 +32,7 @@
                 android:layout_margin="10dp">
                 <ImageView
                     android:layout_width="100dp"
+                    android:padding="6dp"
                     android:id="@+id/operatorimage"
                     android:src="@drawable/ooredoo"
                     android:layout_gravity="center"
@@ -51,9 +52,11 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:textSize="14sp"
+                    android:id="@+id/confirm_amount"
                     android:layout_marginTop="10dp"
                     android:text="00000"/>
                 <View
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#E0E0E0"/>
@@ -68,10 +71,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
+                    android:id="@+id/confirm_phone"
                     android:textSize="14sp"
                     android:layout_marginTop="10dp"
                     android:text="00000"/>
                 <View
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#E0E0E0"/>
@@ -87,8 +92,7 @@
                     android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:backgroundTint="#6A6A6A"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:textSize="14sp"
                     android:id="@+id/cancel_btn"
                     android:layout_margin="8dp"
                     android:textColor="@color/white"
@@ -99,8 +103,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="8dp"
                     android:backgroundTint="#3F51B5"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:textSize="14sp"
                     android:id="@+id/confirm_btn"
                     android:textColor="@color/white"
                     android:text="Confirm"/>
