@@ -15,7 +15,7 @@
         android:text="Recharge Report"
         android:textStyle="bold"
         android:layout_marginLeft="20dp"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textColor="@color/black"
         android:layout_marginTop="@dimen/loginViewsMargin"/>
     <androidx.recyclerview.widget.RecyclerView

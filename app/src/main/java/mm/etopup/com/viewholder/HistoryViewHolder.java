@@ -40,7 +40,7 @@ public class HistoryViewHolder <T> extends BaseViewHolder<T> {
             history_date.setText(((TransitionHistory) data).date);
             rechargeNo.setText(((TransitionHistory) data).phonenumber);
             operatorname.setText(((TransitionHistory) data).operatorName);
-            amount.setText(((TransitionHistory) data).amount);
+            amount.setText(((TransitionHistory) data).amount +" Ks");
         }
 
     }

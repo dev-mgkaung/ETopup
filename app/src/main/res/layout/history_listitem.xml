@@ -2,6 +2,8 @@
 <androidx.cardview.widget.CardView
     app:cardCornerRadius="10dp"
     app:cardElevation="8dp"
+    android:layout_margin="8dp"
+    android:padding="8dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -26,8 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:textSize="13sp"
             android:id="@+id/history_date"
             android:drawableLeft="@drawable/ic_baseline_date_range_24"
             android:text="12/2/2021"
@@ -45,7 +46,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:text="Recharge No"
             android:textColor="@color/black"/>
@@ -53,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:id="@+id/rechargeNo"
             android:textStyle="bold"
             android:text="-------"
@@ -66,7 +67,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:text="Operator"
             android:textColor="@color/black"/>
@@ -74,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:id="@+id/operatorname"
             android:textStyle="bold"
             android:text="OOredoo"
@@ -87,7 +88,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:text="Amount"
             android:textColor="@color/black"/>
@@ -95,10 +96,12 @@
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:id="@+id/amount"
             android:textStyle="bold"
-            android:drawableLeft="@drawable/ic_baseline_minimize_24"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:drawableLeft="@drawable/ic_baseline_minimize_18"
             android:text="1000 Ks"
             android:textColor="@color/black"/>
     </RelativeLayout>
