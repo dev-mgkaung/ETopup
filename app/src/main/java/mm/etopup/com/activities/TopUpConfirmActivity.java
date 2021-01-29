@@ -80,6 +80,8 @@ public class TopUpConfirmActivity extends BaseActivity {
             operatorimage.setImageResource(R.drawable.telenor);
         }else  if(operatorname.equalsIgnoreCase("mec")){
             operatorimage.setImageResource(R.drawable.mec);
+        }else  if(operatorname.equalsIgnoreCase("mytel")){
+            operatorimage.setImageResource(R.drawable.mytel);
         }
         cancel_btn.setOnClickListener(new View.OnClickListener() {
             @Override
