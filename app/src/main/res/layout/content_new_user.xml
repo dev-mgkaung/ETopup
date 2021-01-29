@@ -43,6 +43,19 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/new_user_email"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+            <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ed_email"
+                android:inputType="text"
+                android:maxLines="1"
+                android:hint="Enter Email"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/new_user_phone"
             android:layout_marginTop="@dimen/loginViewsMargin">
             <androidx.appcompat.widget.AppCompatEditText

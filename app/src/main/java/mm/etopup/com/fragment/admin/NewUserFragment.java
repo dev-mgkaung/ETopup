@@ -31,6 +31,9 @@ import mm.etopup.com.session.SessionManager;
 
 public class NewUserFragment extends Fragment {
 
+    @BindView(R.id.ed_email)
+    AppCompatEditText ed_email;
+
     @BindView(R.id.ed_username)
     AppCompatEditText ed_username;
 
@@ -99,7 +102,7 @@ public class NewUserFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 isExistingPhoneNo =false;
-                if(ed_username.getText().toString().equalsIgnoreCase("") || ed_user_phone.getText().toString().equalsIgnoreCase("") ||
+                if(ed_username.getText().toString().equalsIgnoreCase("") || ed_email.getText().toString().equalsIgnoreCase("") ||ed_user_phone.getText().toString().equalsIgnoreCase("") ||
                 ed_user_balance.getText().toString().equalsIgnoreCase("") || ed_new_password.getText().toString().equalsIgnoreCase("") || ed_confirm_password.getText().toString().equalsIgnoreCase(""))
                 {
                     Toast.makeText(getActivity(),"Form incomplete",Toast.LENGTH_SHORT).show();
@@ -110,6 +113,7 @@ public class NewUserFragment extends Fragment {
                         System.out.println(timestamp.getTime());
                         userEntity.user_id = timestamp.getTime();
                         userEntity.user_type = "user";
+                        userEntity.email = ed_email.getText().toString();
                         userEntity.user_name = ed_username.getText().toString();
                         userEntity.balance = Integer.parseInt(ed_user_balance.getText().toString());
                         userEntity.phone_number = ed_user_phone.getText().toString();
