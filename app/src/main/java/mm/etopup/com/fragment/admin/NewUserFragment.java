@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,8 +23,11 @@ import java.sql.Timestamp;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import mm.etopup.com.R;
+import mm.etopup.com.activities.AdminActivity;
+import mm.etopup.com.activities.SplashActivity;
 import mm.etopup.com.database.entity.UserEntity;
 import mm.etopup.com.presenter.AdminPresenter;
+import mm.etopup.com.session.SessionManager;
 
 public class NewUserFragment extends Fragment {
 
@@ -44,6 +48,9 @@ public class NewUserFragment extends Fragment {
 
     @BindView(R.id.ed_confirm_password)
     AppCompatEditText ed_confirm_password;
+
+    @BindView(R.id.logout)
+    ImageView logout;
 
     AdminPresenter adminPresenter;
     private boolean isExistingPhoneNo =false;
@@ -77,6 +84,17 @@ public class NewUserFragment extends Fragment {
 
     public void setUpListener()
     {
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SessionManager.getObjectInstance(getActivity()).setLoggedIn(false);
+                getActivity().finish();
+                SplashActivity.open(getActivity());
+            }
+        });
+
+
         save_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,5 +1,7 @@
 package mm.etopup.com.activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import mm.etopup.com.R;
@@ -9,6 +11,10 @@ import mm.etopup.com.session.SessionManager;
 
 public class SplashActivity extends BaseActivity {
 
+    public static void open(Context context) {
+        Intent intent = new Intent(context, SplashActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
