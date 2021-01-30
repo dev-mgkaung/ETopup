@@ -3,18 +3,66 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="#e0e0e0"
     android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
         <androidx.cardview.widget.CardView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:cardCornerRadius="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="12dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/loginViewsMargin"
+            android:background="@color/white">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:layout_margin="5dp"
+                    android:textStyle="bold"
+                    android:text="Your main Balance"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ks"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:layout_margin="5dp"
+                        android:textColor="@color/black"
+                        android:id="@+id/mainbalance"
+                        android:textStyle="bold"
+                        android:text="0.00 MMK"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_margin="8dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
             app:cardCornerRadius="@dimen/loginCardRadius"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="8dp"
+            android:elevation="12dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_gravity="center"
@@ -26,31 +74,10 @@
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
+                android:layout_margin="5dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:padding="5dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:layout_margin="5dp"
-                    android:textStyle="bold"
-                    android:text="Your main Balance"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:layout_margin="5dp"
-                    android:textColor="@color/black"
-                    android:id="@+id/mainbalance"
-                    android:textStyle="bold"
-                    android:text="0.00 MMK"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#E0E0E0"
-                    android:layout_margin="8dp"/>
 
 
                 <LinearLayout
@@ -69,6 +96,7 @@
                             android:inputType="number"
                             android:maxLines="1"
                             android:maxLength="13"
+                            android:drawableRight="@drawable/ic_baseline_perm_contact_calendar_24"
                             android:hint="Enter Phone Number"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -118,7 +146,7 @@
                         android:text="Recharge"
                         android:textColor="@color/white"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="10dp"
                         android:layout_marginTop="@dimen/loginViewsMargin"/>
                 </LinearLayout>
 
