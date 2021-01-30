@@ -15,6 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="8dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/loginViewsMargin"
             android:layout_marginBottom="@dimen/loginViewsMargin"
@@ -27,11 +29,11 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:padding="5dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:layout_margin="5dp"
                     android:textStyle="bold"
                     android:text="Your main Balance"/>
@@ -40,6 +42,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:layout_margin="5dp"
+                    android:textColor="@color/black"
                     android:id="@+id/mainbalance"
                     android:textStyle="bold"
                     android:text="0.00 MMK"/>
@@ -72,10 +75,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textColor="@color/black"
-                        android:layout_margin="8dp"
-                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
                         android:text="Select Operator"/>
                     <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
@@ -87,7 +89,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/new_user_balance"
-                        android:layout_marginTop="@dimen/loginViewsMargin">
+                        android:layout_marginTop="10dp">
                         <androidx.appcompat.widget.AppCompatEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

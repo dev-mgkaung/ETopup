@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
@@ -29,6 +29,12 @@ public class LoginActivity extends BaseActivity  {
 
     @BindView(R.id.editTextEmail)
     AppCompatEditText editTextEmail;
+
+    @BindView(R.id.forgetpassWord)
+    TextView forgetpassWord;
+
+    @BindView(R.id.register)
+    TextView register;
 
     LoginPresenter loginPresenter;
 
@@ -86,6 +92,23 @@ public class LoginActivity extends BaseActivity  {
                         }
                     }
                 });
+
+            }
+        });
+
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(LoginActivity.this, "This feature current not available",Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+        forgetpassWord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(LoginActivity.this, "This feature current not available",Toast.LENGTH_LONG).show();
 
             }
         });

@@ -63,7 +63,7 @@
             android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/newsMoreTextSize"
             android:layout_gravity="end"
-            android:onClick="viewForgotPAssword"
+            android:id="@+id/forgetpassWord"
             android:layout_marginTop="10dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -80,9 +80,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
+            android:id="@+id/register"
             android:textColor="@color/primaryTextColor"
             android:text="@string/login_signup_hint"
-            android:onClick="viewRegisterClicked"
             android:layout_marginTop="@dimen/loginViewsMargin"/>
 
 
