@@ -1,14 +1,9 @@
 package mm.etopup.com.activities;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.widget.Toast;
-
 import com.google.android.material.tabs.TabLayout;
-
 import androidx.viewpager.widget.ViewPager;
 import mm.etopup.com.R;
 import mm.etopup.com.adapters.SectionsPagerAdapter;

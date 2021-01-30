@@ -39,7 +39,8 @@ public class ContactBottonSheetDialog extends BottomSheetDialogFragment implemen
 
     @Override
     public void selectedPhoneItem(String name, String phone) {
-     contactBottomSheetSelectListener.selectedPhoneItem(name,phone);
+       String s= phone.replace(" ", "") ;
+     contactBottomSheetSelectListener.selectedPhoneItem(name,s);
      dismiss();
     }
 

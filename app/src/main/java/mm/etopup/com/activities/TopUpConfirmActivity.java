@@ -68,7 +68,7 @@ public class TopUpConfirmActivity extends BaseActivity {
         pno = getIntent().getStringExtra("pno").toString();
         amount = getIntent().getIntExtra("amount",0);
 
-        confirm_amount.setText(balance+"  Ks");
+        confirm_amount.setText(amount+"  Ks");
         confirm_phone.setText(pno);
 
         if(operatorname.equalsIgnoreCase("ooredoo"))

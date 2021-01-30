@@ -41,7 +41,7 @@ public class ContactViewHolder <T> extends BaseViewHolder<T> {
             phone_linear.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    contactSelectListener.selectedPhoneItem(((Contact) data).getName(),((Contact) data).getPhone());
+                    contactSelectListener.selectedPhoneItem(((Contact) data).getName(),((Contact) data).getPhone().toString().trim());
                 }
             });
         }

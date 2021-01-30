@@ -12,7 +12,7 @@ import mm.etopup.com.viewholder.AmountViewHolder;
 
 public class AmountListAdapter<T extends BaseViewHolder, W> extends BaseRecyclerAdapter<T, W> {
 
-    private static int previous_postion = -1;
+    int previous_postion = -1;
     AmountViewHolder.AmountSelectListener amountSelectListener ;
     public AmountListAdapter(Context context, AmountViewHolder.AmountSelectListener amountSelectListener) {
         super(context);

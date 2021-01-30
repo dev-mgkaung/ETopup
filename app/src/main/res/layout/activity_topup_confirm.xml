@@ -45,13 +45,15 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:textSize="18sp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="15dp"
                     android:text="Top up Amount"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:textSize="14sp"
+                    android:layout_marginLeft="15dp"
                     android:id="@+id/confirm_amount"
                     android:layout_marginTop="10dp"
                     android:text="00000"/>
@@ -65,6 +67,7 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:textSize="18sp"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
                     android:text="Mobile Number"/>
                 <TextView
@@ -73,6 +76,7 @@
                     android:textStyle="bold"
                     android:id="@+id/confirm_phone"
                     android:textSize="14sp"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
                     android:text="00000"/>
                 <View

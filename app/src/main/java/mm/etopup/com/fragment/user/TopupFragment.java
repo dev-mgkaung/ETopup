@@ -1,6 +1,5 @@
 package mm.etopup.com.fragment.user;
 
-import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -148,7 +146,7 @@ public class TopupFragment extends Fragment implements AmountViewHolder.AmountSe
                 } else {
 
                     if (Integer.parseInt(ed_topup_amount.getText().toString()) < mainBalance) {
-                        if (mainBalance > 0) {
+                        if (mainBalance >= 0) {
                             boolean status  = false;
                             mainBalance = mainBalance - Integer.parseInt(ed_topup_amount.getText().toString());
 

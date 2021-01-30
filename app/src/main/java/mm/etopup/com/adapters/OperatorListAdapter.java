@@ -13,7 +13,7 @@ import mm.etopup.com.viewholder.OperatorViewHolder;
 
 public class OperatorListAdapter<T extends BaseViewHolder, W> extends BaseRecyclerAdapter<T, W> {
 
-    private static int previous_postion = -1;
+    int previous_postion = -1;
     OperatorViewHolder.OperatorSelectListener operatorSelectListener;
 
     public OperatorListAdapter(Context context , OperatorViewHolder.OperatorSelectListener selectListener) {

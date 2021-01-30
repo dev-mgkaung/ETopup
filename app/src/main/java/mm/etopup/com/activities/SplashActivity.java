@@ -26,9 +26,7 @@ public class SplashActivity extends BaseActivity {
             @Override
             public void run() {
                 try {
-                    // Wait delay Time 3 sec
                     sleep(3000);
-                    // Go To Login Screen
                     if (SessionManager.getObjectInstance(SplashActivity.this).getLoggedIn()) {
                         if (SessionManager.getObjectInstance(SplashActivity.this).getAlreadyLoggedInUserType().equalsIgnoreCase("admin")) {
                             AdminActivity.open(SplashActivity.this);
